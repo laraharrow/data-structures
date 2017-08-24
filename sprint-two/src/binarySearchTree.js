@@ -35,7 +35,7 @@ BinarySearchTree.prototype.contains = function(target) {
       return true;
     }
   } else {  // left
-    if (thie.left && this.left.contains(target)) {
+    if (this.left && this.left.contains(target)) {
       return true;
     }
   }
@@ -43,9 +43,21 @@ BinarySearchTree.prototype.contains = function(target) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
+  cb(this.value);
   
+  // right
+  if (this.right) {
+    this.right.depthFirstLog(cb);
+  }
+  // left
+  if (this.left) {
+    this.left.depthFirstLog(cb);
+  }
 };
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ insert: O(log n)
+ contains: O(log n)
+ depthFirstLog: O(log n)
  */
