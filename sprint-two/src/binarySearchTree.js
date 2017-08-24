@@ -6,12 +6,40 @@ var BinarySearchTree = function(value) {
   return bst;
 };
 
-BinarySearchTree.prototype.insert = function(value) {
-  
+BinarySearchTree.prototype.insert = function(newValue) {
+  // right  
+  if (this.value < newValue) {
+    // we found a spot - insert!
+    if (this.right === undefined) {
+      this.right = BinarySearchTree(newValue);
+    } else {
+      this.right.insert(newValue);
+    }
+  } else {  // left
+    // we found a spot - insert!
+    if (this.left === undefined) {
+      this.left = BinarySearchTree(newValue);
+    } else {
+      this.left.insert(newValue);
+    }
+  }
 };
 
-BinarySearchTree.prototype.contains = function(value) {
-  
+BinarySearchTree.prototype.contains = function(target) {
+  if (this.value === target) {
+    return true;
+  }
+  if (this.value < target) {
+    // right
+    if (this.right && this.right.contains(target)) {
+      return true;
+    }
+  } else {  // left
+    if (thie.left && this.left.contains(target)) {
+      return true;
+    }
+  }
+  return false;
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
