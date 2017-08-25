@@ -53,7 +53,7 @@ describe('graph', function() {
     graph.removeNode(5);
     expect(graph.hasEdge(4, 5)).to.equal(false);
   });
-
+  
   it('should execute a callback on each node in the graph', function() {
     var connectToFive = function(item) {
       graph.addEdge(item, 5);
@@ -67,5 +67,10 @@ describe('graph', function() {
     expect(graph.hasEdge(1, 5)).to.equal(true);
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
+  });
+  
+  it ('should have no edges on a newly created node', function() {
+    graph.addNode(12);
+    expect(graph.storage[12].edges).to.eql({});
   });
 });

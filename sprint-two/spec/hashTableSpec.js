@@ -46,6 +46,10 @@ describe('hashTable', function() {
     expect(hashTable.retrieve(v2)).to.equal(v2);
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
+  
+  it ('should initialize storage with a valid object', function() {
+    expect(hashTable._storage).not.to.equal(undefined);
+  });
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {

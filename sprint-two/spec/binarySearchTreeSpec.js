@@ -36,4 +36,11 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+  
+  it ('should not insert greater value on the left side', function() {
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(10);
+    expect(binarySearchTree.right.left).to.equal(undefined);
+  });
 });

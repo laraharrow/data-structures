@@ -52,4 +52,8 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it ('should initialize the linked list with head and tail equal to null', function() {
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
 });
