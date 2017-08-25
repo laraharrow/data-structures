@@ -43,4 +43,23 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(10);
     expect(binarySearchTree.right.left).to.equal(undefined);
   });
+  
+  it ('should execute a callback on every value in a tree using "breadthFirstLog"', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(6); 
+    binarySearchTree.breadthFirstLog(function(node) {
+      if (node.value) {
+        node.value += 10;
+      }  
+    });
+    expect(binarySearchTree.contains(12)).to.equal(true);
+    expect(binarySearchTree.contains(17)).to.equal(true);
+    expect(binarySearchTree.contains(11)).to.equal(true);
+    expect(binarySearchTree.contains(13)).to.equal(true);
+    expect(binarySearchTree.contains(16)).to.equal(true);
+  });
+
 });

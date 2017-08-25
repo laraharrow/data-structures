@@ -55,9 +55,24 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
   }
 };
 
+BinarySearchTree.prototype.breadthFirstLog = function(cb) {
+  var queue = [this];
+  while (queue.length) {
+    if (queue[0].left) {
+      queue.push(queue[0].left);
+    }
+    if (queue[0].right) {
+      queue.push(queue[0].right);
+    }
+    cb(queue[0]);
+    queue.shift();
+  }
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  insert: O(log n)
  contains: O(log n)
- depthFirstLog: O(log n)
+ depthFirstLog: O(n)
+ breadthFirstLog: O(n)
  */
