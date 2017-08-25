@@ -40,8 +40,27 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
+  
   it ('should have no children on newly added nodes', function() {
     tree.addChild(5);
     expect(tree.children[0].children).to.eql([]);
+  });
+  
+  it ('should traverse through the entire tree', function() {
+    tree.addChild(1);
+    tree.addChild(3);
+    tree.children[0].addChild(5);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(9);
+    tree.traverse(function(node) {
+      if (node.value) {
+        node.value += 1;
+      }  
+    });
+    expect(tree.contains(2)).to.equal(true);
+    expect(tree.contains(4)).to.equal(true);
+    expect(tree.contains(6)).to.equal(true);
+    expect(tree.contains(8)).to.equal(true);
+    expect(tree.contains(10)).to.equal(true);
   });
 });

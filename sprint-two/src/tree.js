@@ -26,10 +26,16 @@ treeMethods.contains = function(target) {
   return false;
 };
 
-
+treeMethods.traverse = function(cb) {
+  cb(this);
+  for (var i = 0; i < this.children.length; i++) {
+    this.children[i].traverse(cb);
+  }
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
  addChild: O(1)
  contains: O(n)
+ traverse: O(n)
  */
