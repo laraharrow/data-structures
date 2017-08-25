@@ -24,12 +24,21 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
   
-  it ('should only unique values', function() {
+  it ('should only add unique values', function() {
     set.add('Lam');
     set.add('Lam');
     expect(set.contains('Lam')).to.equal(true);
     set.remove('Lam');
     expect(set.contains('Lam')).to.equal(false);
   });
-
+  
+  it ('should handle adding numbers', function() {
+    set.add(5);
+    expect(set.contains(5)).to.equal(true);
+  });
+  
+  it ('should handle adding objects', function() {
+    set.add({a: 1});
+    expect(set.contains({a: 1})).to.equal(true);
+  });
 });
