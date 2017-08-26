@@ -90,4 +90,17 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(11);
     expect(binarySearchTree.isBalanced()).to.equal(true);
   });
+  
+  it ('should correctly LL balance', function() {
+    binarySearchTree.insert(50);
+    binarySearchTree.insert(20);
+    binarySearchTree.insert(25);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(15);
+    binarySearchTree.insert(80);
+    expect(binarySearchTree.isBalanced()).to.equal(false);
+    binarySearchTree.rebalance();
+    expect(binarySearchTree.isBalanced()).to.equal(true);
+  });
+  
 });
