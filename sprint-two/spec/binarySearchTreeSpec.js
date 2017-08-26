@@ -62,4 +62,32 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.contains(16)).to.equal(true);
   });
 
+  it ('should have a height of 0 for a tree with no children', function() {
+    expect(binarySearchTree.getHeight()).to.equal(0);
+  });
+
+  it ('should have a height of 3', function() {
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(11);
+    expect(binarySearchTree.getHeight()).to.equal(3);
+  });
+
+  it ('should return false when not balanced', function() {
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(11);
+    expect(binarySearchTree.isBalanced()).to.equal(false);
+  });
+  
+  it ('should return true when balanced', function() {
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(11);
+    expect(binarySearchTree.isBalanced()).to.equal(true);
+  });
 });

@@ -69,6 +69,45 @@ BinarySearchTree.prototype.breadthFirstLog = function(cb) {
   }
 };
 
+BinarySearchTree.prototype.isBalanced = function() {
+  var leftHeight = this.left.getHeight() + 1;
+  var rightHeight = this.right.getHeight() + 1;
+  var max, min;
+    
+  if (leftHeight > rightHeight) {
+    max = leftHeight;
+    min = rightHeight;
+  } else {
+    max = rightHeight;
+    min = leftHeight;
+  }
+  return min * 2 > max;  
+};
+
+BinarySearchTree.prototype.rebalance = function() {
+  
+};
+
+BinarySearchTree.prototype.getHeight = function() {
+  var leftHeight = 0;
+  var rightHeight = 0;
+
+  if (!this.left && !this.right) {
+    return 0;
+  }
+
+  if (this.left) {
+    leftHeight = this.left.getHeight() + 1;
+  }
+
+  if (this.right) {
+    rightHeight = this.right.getHeight() + 1;
+  }
+  
+  // returns max depth of the tree
+  return (leftHeight > rightHeight) ? leftHeight : rightHeight;
+};
+
 /*
  * Complexity: What is the time complexity of the above functions?
  insert: O(log n)
