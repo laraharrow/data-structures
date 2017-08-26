@@ -63,4 +63,37 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
     expect(tree.contains(10)).to.equal(true);
   });
+  
+  it ('should have a parent', function() {
+    var tree = Tree(5);  
+    tree.addChild(7);
+    expect(tree.children[0].parent.value).to.equal(5);
+  }); 
+  
+  it ('should not set roots parent on removeFromParent', function() {
+    tree.removeFromParent();
+    expect(tree.parent).to.equal(null);
+  }); 
+  
+  it ('should remove parent and child association on removeFromParent', function() {
+    tree.addChild(3);
+    tree.addChild(7);
+    var seven = tree.children[1];
+    seven.addChild(10);
+    var ten = seven.children[0];
+    ten.removeFromParent();
+    expect(ten.parent).to.equal(null);
+    expect(seven.children).to.eql([]);
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
