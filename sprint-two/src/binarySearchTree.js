@@ -92,10 +92,15 @@ BinarySearchTree.prototype.isBalanced = function() {
 };
 
 BinarySearchTree.prototype.rebalance = function() {
-  
   while (!this.isBalanced()) {
-    var leftHeight = this.left.getHeight() + 1;
-    var rightHeight = this.right.getHeight() + 1;
+    var leftHeight = 0;
+    var rightHeight = 0;
+    if (this.left) {
+      leftHeight = this.left.getHeight() + 1;
+    }
+    if (this.right) {
+      rightHeight = this.right.getHeight() + 1;
+    }
     if (leftHeight > rightHeight) {
       var leftChild = this.left;
       if (leftChild.left.getHeight() + 1 > leftChild.right.getHeight() + 1) {

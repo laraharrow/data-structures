@@ -92,7 +92,7 @@ describe('binarySearchTree', function() {
   });
   
   it ('should correctly LL balance', function() {
-    binarySearchTree.insert(50);
+    var binarySearchTree = BinarySearchTree(50);
     binarySearchTree.insert(20);
     binarySearchTree.insert(25);
     binarySearchTree.insert(10);
