@@ -92,17 +92,18 @@ BinarySearchTree.prototype.isBalanced = function() {
 };
 
 BinarySearchTree.prototype.rebalance = function() {
-  while (!this.isBalanced()) {
+  var topRoot = this;
+  while (!topRoot.isBalanced()) {
     var leftHeight = 0;
     var rightHeight = 0;
-    if (this.left) {
-      leftHeight = this.left.getHeight() + 1;
+    if (topRoot.left) {
+      leftHeight = topRoot.left.getHeight() + 1;
     }
-    if (this.right) {
-      rightHeight = this.right.getHeight() + 1;
+    if (topRoot.right) {
+      rightHeight = topRoot.right.getHeight() + 1;
     }
     if (leftHeight > rightHeight) {
-      var leftChild = this.left;
+      var leftChild = topRoot.left;
       var leftChildLeftHeight = 0;
       var leftChildRightHeight = 0;
       if (leftChild.left) {
@@ -119,16 +120,17 @@ BinarySearchTree.prototype.rebalance = function() {
         // root.left = pivot.right (25)
         // pivot.rigth  = root
         
-        var rootTree = this;
+        var rootTree = topRoot;
         var pivot = rootTree.left;
         rootTree.left = pivot.right;
         pivot.right = rootTree;
+        topRoot = pivot; 
                 
       } else {
         //LR
       }
     } else {
-      var rightChild = this.right;
+      var rightChild = topRoot.right;
       var rightChildLeftHeight = 0;
       var rightChildRightHeight = 0;
       if (rightChild.left) {
@@ -139,10 +141,11 @@ BinarySearchTree.prototype.rebalance = function() {
       }
       if (rightChildRightHeight > rightChildLeftHeight) {
         //RR
-        var rootTree = this;
+        var rootTree = topRoot;
         var pivot = rootTree.right;
         rootTree.right = pivot.left;
-        pivot.left = rootTree;  
+        pivot.left = rootTree; 
+        topRoot = pivot; 
       } 
       // else {
       //   //RL
