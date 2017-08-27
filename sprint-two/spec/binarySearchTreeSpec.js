@@ -98,6 +98,19 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(10);
     binarySearchTree.insert(15);
     binarySearchTree.insert(80);
+    binarySearchTree.insert(5);
+    expect(binarySearchTree.isBalanced()).to.equal(false);
+    binarySearchTree.rebalance();
+    expect(binarySearchTree.isBalanced()).to.equal(true);
+  });
+  
+  it ('should correctly RR balance', function() {
+    var binarySearchTree = BinarySearchTree(50);
+    binarySearchTree.insert(30);
+    binarySearchTree.insert(80);
+    binarySearchTree.insert(100);
+    binarySearchTree.insert(90);
+    binarySearchTree.insert(110);
     expect(binarySearchTree.isBalanced()).to.equal(false);
     binarySearchTree.rebalance();
     expect(binarySearchTree.isBalanced()).to.equal(true);
